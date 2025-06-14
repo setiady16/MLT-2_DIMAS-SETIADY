@@ -136,21 +136,6 @@ Bagian ini menyajikan hasil evaluasi performa sistem rekomendasi berdasarkan eva
 | The Dark Knight  | The Dark Knight Rises Batman Begins    | Action Crime Drama             | Tinggi tema superhero dan genre serupa |
 | Inception        | Cypher Minority Report                 | Action Adventure Sci-Fi        | Sedang tema sci-fi relevan tetapi kurang spesifik |
 
-  Film	                               Rekomendasi Contoh	                                         
-Toy Story                       Toy Story 3 Toy Story 2 Small Fry      
-	         	     
-The Dark Knight	                The Dark Knight Rises Batman Begins        
-   	  
-Inception	                      Cypher Minority Report	              
-
-
-   Genre Asli	                                Relevansi
- Animation Comedy Family                sekuel dan spin-off relevan
-
- Action Crime Drama                     Tinggi tema superhero dan genre serupa
- 
- Action Adventure Sci-Fi		            Sedang tema sci-fi relevan tetapi kurang spesifik
-  
 
 ---
 
