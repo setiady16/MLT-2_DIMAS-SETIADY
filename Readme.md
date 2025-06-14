@@ -117,14 +117,18 @@ Dataset yang digunakan dalam proyek ini adalah The Movies Dataset tersedia di ht
 3. Parsing Kolom Genres:
   - JSON genres diubah menjadi teks (misalnya, "Animation Comedy Family").
 
-4. Filtering Data:
-  - Film dengan vote_count ≤ 50 difilter, tersisa 10.041 baris.
-
-5. Pembuatan Fitur Gabungan:
+4. Pembuatan Fitur Gabungan:
   - combined_features = genres + overview + tagline.
+
+5. Filtering Data:
+  - Film dengan vote_count ≤ 50 difilter, tersisa 10.041 baris.
 
 6. Ekstraksi Fitur dengan TF-IDF:
   - TfidfVectorizer (stop_words='english', max_features=5000) menghasilkan matriks TF-IDF.
+
+7. Penambahan Fitur Tagline (Iteratif):
+  - Setelah evaluasi awal tanpa tagline (menghasilkan Precision Toy Story 0.60), tagline ditambahkan ke combined_features untuk meningkatkan relevansi.
+  - tagline diisi dengan string kosong untuk missing values (df['tagline'] = df['tagline'].fillna('')).
 
 *Insight :*
 - Preprocessing menghasilkan dataset bersih.
