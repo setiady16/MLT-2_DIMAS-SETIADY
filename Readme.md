@@ -1,4 +1,4 @@
-# **Laporan Proyek Membuat Model Sistem Rekomendasi - Dimas Aditia Anugerah Setiady**
+# **Laporan Proyek : Membuat Model Sistem Rekomendasi - Dimas Aditia Anugerah Setiady**
 
 Sistem rekomendasi film bertujuan membantu pengguna menemukan film yang sesuai dengan preferensi mereka berdasarkan konten seperti genre dan deskripsi overview Menurut laporan dari Netflix jumlah konten di platform streaming telah meningkat hingga lebih dari 5800 film pada tahun 2023 menyebabkan pengguna sering kesulitan memilih film yang relevan [Netflix 2023] Pendekatan Content-based Filtering memungkinkan rekomendasi yang akurat tanpa memerlukan data preferensi pengguna sebelumnya sehingga efektif untuk masalah cold-start.
 
