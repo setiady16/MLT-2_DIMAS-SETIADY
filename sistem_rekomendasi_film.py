@@ -1,3 +1,4 @@
+# sistem_rekomendasi_film.py
 # Proyek Akhir: Sistem Rekomendasi Film Berbasis Content-based Filtering
 # Nama: Dimas Aditia Anugerah Setiady
 # Email: mc240d5y0910@student.devacademy.id
@@ -17,7 +18,7 @@ warnings.simplefilter('ignore')
 # Data Understanding
 # Load dataset
 try:
-    df = pd.read_csv(r'C:\Users\ADVAN\Documents\The Movies Dataset\movies_metadata.csv', low_memory=False)
+    df = pd.read_csv(r'C:\Users\ADVAN\Documents\The Movies Dataset\movies_metadata.csv')
     print("Dataset berhasil dimuat!")
 except FileNotFoundError:
     print("Error: File 'movies_metadata.csv' tidak ditemukan di path yang diberikan.")
@@ -67,7 +68,7 @@ print(df.isnull().sum())
 # 2. Tangani missing value
 df['overview'] = df['overview'].fillna('')  # Ganti NaN dengan string kosong
 df['genres'] = df['genres'].fillna('')      # Ganti NaN dengan string kosong
-df['title'] = df['title'].fillna('')       # Ganti NaN dengan string kosong
+df['title'] = df['title'].fillna('')        # Ganti NaN dengan string kosong
 
 # 3. Cek data duplikat
 duplicates = df.duplicated().sum()
@@ -94,7 +95,7 @@ df['genres'] = df['genres'].apply(parse_genres)
 df['combined_features'] = df['genres'] + ' ' + df['overview']
 
 # 7. Filter film dengan vote_count > 50 untuk memastikan kualitas
-df = df[df['vote_count'] > 50]
+df = df[df['vote_count'] > 50].reset_index(drop=True)  # Reset indeks setelah filtering
 
 # 8. Cek hasil preprocessing
 print("\nHasil Preprocessing (5 Baris Pertama):")
@@ -127,9 +128,6 @@ def get_recommendations(title, cosine_sim=cosine_sim, df=df, top_k=10):
 
     idx = matches.index[0]
     
-    if idx >= cosine_sim.shape[0]:
-        return f"Index {idx} lebih besar dari ukuran cosine_sim: {cosine_sim.shape[0]}"
-
     try:
         sim_scores = list(enumerate(cosine_sim[idx]))
         sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
