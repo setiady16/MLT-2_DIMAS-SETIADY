@@ -1,24 +1,28 @@
-# **Laporan Proyek : Membuat Model Sistem Rekomendasi - Dimas Aditia Anugerah Setiady**
+# **Laporan Proyek Akhir: Sistem Rekomendasi Film Berbasis Content-Based Filtering - Dimas Aditia Anugerah Setiady**
 
-Sistem rekomendasi film bertujuan membantu pengguna menemukan film yang sesuai dengan preferensi mereka berdasarkan konten seperti genre dan deskripsi overview Menurut laporan dari Netflix jumlah konten di platform streaming telah meningkat hingga lebih dari 5800 film pada tahun 2023 menyebabkan pengguna sering kesulitan memilih film yang relevan [Netflix 2023] Pendekatan Content-based Filtering memungkinkan rekomendasi yang akurat tanpa memerlukan data preferensi pengguna sebelumnya sehingga efektif untuk masalah cold-start.
+## Project Overview
 
-Sistem ini memanfaatkan metadata film seperti genre dan overview dari dataset The Movies Dataset yang berisi 45466 film dengan informasi seperti judul genre dan deskripsi Dengan teknologi machine learning sistem rekomendasi dapat mengurangi waktu yang dihabiskan pengguna untuk mencari film dan meningkatkan kepuasan menonton.
+### Latar Belakang
+
+Di era digital, platform streaming seperti Netflix, Disney+, dan Amazon Prime Video menyediakan ribuan film, yang sering kali membuat pengguna kewalahan dalam memilih konten yang sesuai dengan preferensi mereka. Fenomena ini dikenal sebagai information overload, di mana banyaknya pilihan justru menghambat pengambilan keputusan (Adomavicius & Tuzhilin, 2005). Sistem rekomendasi menjadi solusi penting untuk membantu pengguna menemukan film yang relevan berdasarkan preferensi mereka, meningkatkan kepuasan pengguna, dan memperpanjang waktu interaksi dengan platform (Ricci et al., 2011). Pendekatan Content-Based Filtering memanfaatkan fitur konten, seperti genre, sinopsis (overview), dan tagline, untuk menghitung kemiripan antar film, menjadikannya metode yang efektif untuk rekomendasi personal (Lops et al., 2011). Proyek ini menggunakan The Movies Dataset dari Kaggle untuk membangun sistem rekomendasi berbasis Content-Based Filtering yang merekomendasikan film berdasarkan kemiripan teks.
 
 ### Mengapa dan Bagaimana Masalah Ini Harus Diselesaikan
 
-Masalah ini penting untuk diselesaikan karena :
+Tanpa sistem rekomendasi yang efektif, pengguna mungkin menghabiskan waktu lama untuk mencari film atau bahkan meninggalkan platform karena frustrasi. Studi menunjukkan bahwa rekomendasi yang relevan dapat meningkatkan user engagement hingga 30% dan mengurangi churn rate (Gomez-Uribe & Hunt, 2015). Selain itu, sistem rekomendasi membantu platform streaming mengoptimalkan inventaris konten mereka dengan mempromosikan film yang mungkin terlewatkan oleh pengguna. Dalam konteks ini, Content-Based Filtering dipilih karena kemampuannya untuk merekomendasikan item baru tanpa memerlukan data interaksi pengguna yang besar, yang sering kali menjadi kendala pada pendekatan Collaborative Filtering (Lops et al., 2011).
 
-- Pengguna menghadapi kelebihan pilihan choice overload yang dapat mengurangi kepuasan menonton.
-- Platform streaming memerlukan sistem rekomendasi yang efektif untuk meningkatkan retensi pengguna dan durasi penggunaan aplikasi.
-- Rekomendasi berbasis konten memungkinkan personalisasi tanpa data interaksi pengguna cocok untuk pengguna baru
+### Bagaimana Masalah Ini Diselesaikan
 
-Sistem rekomendasi dibangun menggunakan pendekatan Content-based Filtering dengan TF-IDF Vectorizer untuk mengubah genre dan overview menjadi vektor numerik dan Cosine Similarity untuk menghitung kemiripan antar film Pendekatan ini memungkinkan platform streaming atau aplikasi hiburan memberikan rekomendasi yang relevan secara otomatis meningkatkan pengalaman pengguna dan efisiensi pencarian.
+Proyek ini mengembangkan sistem rekomendasi menggunakan TF-IDF Vectorizer untuk mengubah fitur teks (genres, overview, tagline) menjadi representasi numerik, diikuti oleh Cosine Similarity untuk mengukur kemiripan antar film. Sistem dievaluasi dengan metrik Precision, Recall, dan F1-Score, menargetkan Precision rata-rata di atas 85%.
 
 ### Referensi
 
-- Netflix (2023) Netflix Research Content Statistics Diakses dari https://research.netflix.com
-- Ricci M et al (2015) Recommender Systems Handbook 2nd ed Boston MA Springer https://doi.org/10.1007/978-1-4899-7637-6
-- Adomavicius G and Tuzhilin A (2005) Toward the next generation of recommender systems A survey of the state-of-the-art and possible extensions IEEE Transactions on Knowledge and Data Engineering 17(6) 734-749 https://doi.org/10.1109/TKDE.2005.99
+- Adomavicius, G., & Tuzhilin, A. (2005). Toward the next generation of recommender systems: A survey of the state-of-the-art and possible extensions. IEEE Transactions on Knowledge and Data Engineering, 17(6), 734–749. https://doi.org/10.1109/TKDE.2005.99
+
+- Gomez-Uribe, C. A., & Hunt, N. (2015). The Netflix recommender system: Algorithms, business value, and innovation. ACM Transactions on Management Information Systems, 6(4), 1–19. https://doi.org/10.1145/2843948
+
+- Lops, P., de Gemmis, M., & Semeraro, G. (2011). Content-based recommender systems: State of the art and trends. In F. Ricci, L. Rokach, B. Shapira, & P. B. Kantor (Eds.), Recommender systems handbook (pp. 73–105). Springer. https://doi.org/10.1007/978-0-387-85820-3_3
+
+- Ricci, F., Rokach, L., Shapira, B., & Kantor, P. B. (Eds.). (2011). Recommender systems handbook. Springer. https://doi.org/10.1007/978-0-387-85820-3
 
 
 ---
@@ -27,165 +31,194 @@ Sistem rekomendasi dibangun menggunakan pendekatan Content-based Filtering denga
 
 ### Problem Statement
 
-Platform streaming memiliki ribuan film yang menyebabkan pengguna kesulitan memilih konten yang sesuai dengan preferensi mereka Banyak pengguna menghabiskan waktu lama untuk mencari film yang relevan namun sering kali merasa tidak puas dengan pilihan mereka Masalah utamanya adalah :
+Berikut adalah pernyataan masalah yang diidentifikasi dalam konteks proyek ini:
 
-- Bagaimana cara mengidentifikasi film yang sesuai dengan preferensi pengguna berdasarkan konten seperti genre dan overview?
-- Dapatkah kita membangun sistem rekomendasi yang mampu memberikan saran film secara akurat dan efisien tanpa data preferensi pengguna sebelumnya cold-start problem?
-
+- Pernyataan Masalah 1: Pengguna platform streaming menghabiskan waktu lama untuk memilih film karena jumlah pilihan yang sangat banyak, menyebabkan information overload dan menurunkan kepuasan pengguna.
+- Pernyataan Masalah 2: Banyak film berkualitas di platform streaming tidak ditemukan oleh pengguna karena kurangnya sistem rekomendasi yang dapat menyesuaikan preferensi berdasarkan konten film seperti genre dan sinopsis.
+- Pernyataan Masalah 3: Platform streaming memerlukan sistem rekomendasi yang mampu menghasilkan rekomendasi relevan tanpa ketergantungan pada data interaksi pengguna yang besar, yang sering kali tidak tersedia untuk pengguna baru atau film baru.
 
 ### Goals
 
 Tujuan dari proyek ini adalah:
 
-- Mengembangkan sistem rekomendasi berbasis Content-based Filtering untuk merekomendasikan film berdasarkan kemiripan genre dan overview.
-- Memberikan solusi rekomendasi yang dapat diintegrasikan dalam platform streaming atau aplikasi hiburan untuk meningkatkan pengalaman pengguna.
-- Membantu pengguna menemukan film relevan secara otomatis dengan evaluasi kualitatif berdasarkan kesamaan genre dan tema naratif.
+- Mengembangkan sistem rekomendasi yang menghasilkan top-10 rekomendasi film relevan berdasarkan kemiripan genres, overview, dan tagline.
+- Mencapai Precision rata-rata di atas 85% untuk memastikan rekomendasi memiliki genre yang sesuai dengan film input.
+- Mengoptimalkan model dengan fitur tambahan (tagline) dan preprocessing data yang tepat.
+
+### Solution Statement
+
+- Menggunakan Content-Based Filtering dengan TF-IDF Vectorizer untuk mengubah teks (genres, overview, tagline) menjadi representasi numerik.
+- Menghitung kemiripan antar film dengan Cosine Similarity untuk menghasilkan top-10 rekomendasi.
+- Mengevaluasi model dengan Precision, Recall, dan F1-Score, serta analisis kualitatif.
+- Menerapkan preprocessing seperti penanganan missing values, penghapusan duplikat, dan filtering vote_count untuk kualitas data.
 
 
 ---
 
 ## Data Understanding
 
-Dataset yang digunakan dalam proyek ini adalah The Movies Dataset tersedia di https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset Dataset ini dirancang untuk membangun sistem rekomendasi film berdasarkan metadata seperti genre dan overview.
+Dataset yang digunakan dalam proyek ini adalah The Movies Dataset tersedia di https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset  Dataset ini berisi metadata 45.466 film dengan 24 kolom. Berikut deskripsi fitur:
+
+1. adult: Film untuk audiens dewasa (True/False).
+2. belongs_to_collection: Koleksi/seri film.
+3. budget: Anggaran produksi (dolar).
+4. genres: Genre film (JSON).
+5. homepage: URL situs resmi.
+6. id: ID unik film.
+7. imdb_id: ID IMDb.
+8. original_language: Bahasa asli.
+9. original_title: Judul asli.
+10. overview: Sinopsis film.
+11. popularity: Skor popularitas TMDB.
+12. poster_path: Path poster.
+13. production_companies: Perusahaan produksi (JSON).
+14. production_countries: Negara produksi (JSON).
+15. release_date: Tanggal rilis.
+16. revenue: Pendapatan (dolar).
+17. runtime: Durasi (menit).
+18. spoken_languages: Bahasa film (JSON).
+19. status: Status (misalnya, Released).
+20. tagline: Slogan promosi.
+21. title: Judul Inggris.
+22. video: Ada video terkait (True/False).
+23. vote_average: Rata-rata rating (0-10).
+24. vote_count: Jumlah rating.
 
 
-### Ringkasan Dataset
+### Eksplorasi Data
 
-- Jumlah Baris 45466
-- Jumlah Kolom 24
-- Variabel Utama title genres overview
-- Tipe Data
-  - String title overview
-  - JSON genres
+- Jumlah Data: 45.466 baris, 24 kolom.
+- Missing Values: overview (954 kosong), tagline (25.054 kosong), title (6 kosong).
+- Duplikat: 13 data duplikat.
+- Statistik Deskriptif:
+  - vote_average: Rata-rata 5.62, min 0, max 10.
+  - vote_count: Rata-rata 109.9, max 14.075, distribusi skewed.
   - Numerik vote_average vote_count
+- Visualisasi: vote_average terkonsentrasi pada 5-7, vote_count didominasi nilai rendah.
 
-
-### Deskripsi Fitur
-
-Dataset ini memiliki 12 kolom Dataset ini memiliki kolom utama berikut
-1. title Judul film dalam format string.
-2. genres Daftar genre film dalam format JSON misalnya [{'id' 16 'name' 'Animation'} {'id' 35 'name' 'Comedy'}].
-3. overview Deskripsi singkat film dalam format string.
-4. vote_average Rata-rata rating film skala 0-10.
-5. vote_count Jumlah voting yang diterima film.
-
-### Kondisi Data Awal
-
-- Nilai yang Hilang Kolom overview memiliki 954 nilai kosong sekitar 21 persen title dan vote_average masing-masing 6 nilai kosong genres tidak memiliki nilai kosong tetapi memerlukan parsing JSON
-- Terdapat 13 Duplikasi Data namun telah berhasil ditangani.
-- Distribusi Data Distribusi vote_average menunjukkan sebagian besar film memiliki rating 5-7 vote_count sangat miring ke kanan dengan median 10 menunjukkan beberapa film populer memiliki voting tinggi.
-
-
-### Sumber Dataset
-
-Dataset ini tersedia secara publik di Kaggle The Movies Dataset. Dataset ini cocok untuk mengembangkan model sistem rekomendasi berbasis konten khususnya untuk rekomendasi film berdasarkan metadata.
+*Insight :*
+- Fitur genres, overview, dan tagline kunci untuk rekomendasi.
+- Missing values pada tagline perlu penanganan.
+- Filtering vote_count > 50 untuk fokus pada film populer.
 
 
 ---
 
 ## Data Preparation
 
-Untuk mempersiapkan dataset agar dapat digunakan dalam pembangunan sistem rekomendasi beberapa langkah preprocessing dilakukan sesuai urutan eksekusi berikut :
+### Teknik Preprocessing
 
-1. Penanganan Nilai yang Hilang Kolom title genres dan overview memiliki nilai kosong yang diisi dengan string kosong untuk memastikan data lengkap untuk ekstraksi fitur.
+1. Penanganan Missing Values:
+  - overview, genres, title, tagline diisi dengan ''.
 
-2. Pemeriksaan Duplikasi Dataset diperiksa untuk memastikan tidak ada baris duplikat dan hasilnya menunjukkan tidak ada duplikasi.
+2. Penghapusan Duplikat:
+  - Menghapus 13 duplikat dengan drop_duplicates(), indeks diatur ulang.
 
-3. Parsing Kolom Genres Kolom genres dalam format JSON diubah menjadi string misalnya Animation Comedy Family menggunakan fungsi parse_genres untuk memungkinkan penggunaan sebagai fitur teks.
+3. Parsing Kolom Genres:
+  - JSON genres diubah menjadi teks (misalnya, "Animation Comedy Family").
 
-4. Pembuatan Fitur Gabungan Kolom genres dan overview digabung menjadi combined_features untuk ekstraksi fitur TF-IDF.
+4. Filtering Data:
+  - Film dengan vote_count ≤ 50 difilter, tersisa 10.041 baris.
 
-5. Filtering Data Memfilter film dengan vote_count di atas 50 untuk memastikan hanya film populer yang digunakan mengurangi kebisingan dan mereset indeks untuk konsistensi dengan matriks Cosine Similarity.
+5. Pembuatan Fitur Gabungan:
+  - combined_features = genres + overview + tagline.
+
+6. Ekstraksi Fitur dengan TF-IDF:
+  - TfidfVectorizer (stop_words='english', max_features=5000) menghasilkan matriks TF-IDF.
+
+*Insight :*
+- Preprocessing menghasilkan dataset bersih.
+- tagline meningkatkan kualitas fitur teks.
+- TF-IDF siap untuk Cosine Similarity.
 
 
 ---
 
 ## Modeling
 
-Untuk membangun sistem rekomendasi dua pendekatan Content-based Filtering diuji Content-based Filtering dengan TF-IDF dan Cosine Similarity sebagai model utama dan Content-based Filtering dengan Word Embeddings sebagai alternatif Berikut adalah penjelasan cara kerja dan parameter utama untuk setiap pendekatan:
+### Pendekatan Modeling
 
-1. Content-based Filtering dengan TF-IDF dan Cosine Similarity 
+- Ekstraksi Fitur: Matriks TF-IDF dari combined_features.
+- Perhitungan Kemiripan: Cosine Similarity antar film.
+- Fungsi Rekomendasi: Top-10 film berdasarkan skor kemiripan.
 
-- Cara Kerja Mengubah fitur combined_features genres dan overview menjadi vektor numerik menggunakan TF-IDF Vectorizer kemudian menghitung kemiripan antar film dengan Cosine Similarity Fungsi get_recommendations mengembalikan 10 film paling mirip berdasarkan skor kemiripan
-- Parameter Utama :
-  - TF-IDF Vectorizer max_features=5000 stop_words=english
-  - Cosine Similarity metric default dari scikit-learn
+### Hasil Rekomendasi (Top-N)
 
-2. Content-based Filtering dengan Word Embeddings
+- The Dark Knight:
+  1. The Dark Knight Rises
+  2. Batman Returns
+  3. The Lego Batman Movie
+  4. Batman Forever
+  5. Batman: The Dark Knight Returns, Part 2
+  6. Batman vs Dracula
+  7. Batman: Under the Red Hood
+  8. Batman: Year One
+  9. Batman: Mask of the Phantasm
+  10. Batman: The Dark Knight Returns, Part 1
 
-- Cara Kerja Menggunakan model Word2Vec untuk menangkap hubungan semantik dalam genres dan overview menghasilkan vektor teks yang lebih kaya makna Kemiripan dihitung menggunakan Cosine Similarity pada vektor embeddings.
-- Parameter Utama
-  - Word2Vec window=5 min_count=1 workers=4
-  - Cosine Similarity metric defaul
-- Catatan Pendekatan ini tidak diimplementasikan karena keterbatasan sumber daya komputasi tetapi diusulkan sebagai alternatif.
+- Toy Story:
+  1. Toy Story 3
+  2. Toy Story 2
+  3. Small Fry
+  4. The 40 Year Old Virgin
+  5. Man on the Moon
+  6. Factory Girl
+  7. Rebel Without a Cause
+  8. Class of 1984
+  9. Manhattan
+  10. For Love or Money
 
-*Insight :* - Model utama TF-IDF dan Cosine Similarity digunakan untuk menghasilkan rekomendasi karena sederhana dan efektif untuk dataset teksAccuracy, Precision, Recall, F1-Score, dan ROC-AUC.
+- Inception:
+  1. Transformers: Revenge of the Fallen
+  2. Cypher
+  3. Repeaters
+  4. Renaissance
+  5. Seconds
+  6. Pitch Perfect 2
+  7. Thick as Thieves
+  8. Mission: Impossible - Rogue Nation
+  9. Stolen
+  10. Adventures of Arsene Lupin
+
+
+*Insight :*
+- The Dark Knight: Rekomendasi relevan (tema Batman, Action/Crime).
+- Toy Story: Tiga rekomendasi relevan (Toy Story 3, Toy Story 2, Small Fry), beberapa kurang sesuai (Comedy umum).
+- Inception: Mayoritas relevan (Sci-Fi/Thriller), kecuali Pitch Perfect 2.
+- tagline meningkatkan relevansi Toy Story.
 
 
 ---
+
 
 ## Evaluation
 
-Bagian ini menyajikan hasil evaluasi performa sistem rekomendasi berdasarkan evaluasi kualitatif dengan memeriksa relevansi rekomendasi untuk tiga film The Dark Knight Toy Story dan Inception Metrik ini dipilih karena keterbatasan data preferensi pengguna sehingga metrik kuantitatif seperti Precision atau Recall tidak dapat diterapkan.
+### Metrik Evaluasi
+
+- Precision: Proporsi rekomendasi relevan (genre sama) dari top-10.
+- Recall: Proporsi rekomendasi relevan dari total film relevan.
+- F1-Score: Harmonic mean Precision dan Recall.
 
 ### Hasil Evaluasi
 
-| Film             | Rekomendasi Contoh                     | Genre Asli                     | Relevansi                              |
-|------------------|----------------------------------------|--------------------------------|----------------------------------------|
-| Toy Story        | Toy Story 3 Toy Story 2 Small Fry      | Animation Comedy Family        | Tinggi sekuel dan spin-off relevan     |
-| The Dark Knight  | The Dark Knight Rises Batman Begins    | Action Crime Drama             | Tinggi tema superhero dan genre serupa |
-| Inception        | Cypher Minority Report                 | Action Adventure Sci-Fi        | Sedang tema sci-fi relevan tetapi kurang spesifik |
+- The Dark Knight: Precision 1.00, Recall 0.0015, F1-Score 0.00.
+- Toy Story: Precision 0.70, Recall 0.0018, F1-Score 0.00.
+- Inception: Precision 0.90, Recall 0.0020, F1-Score 0.00.
+- Rata-rata: Precision 0.87, Recall 0.0018, F1-Score 0.00.
+
+*Insight :*
+- Precision 0.87 memenuhi target >85%.
+- Peningkatan Precision Toy Story (0.60 ke 0.70) karena tagline.
+- Recall rendah normal untuk top-10.
+- Kualitatif: The Dark Knight sangat relevan, Toy Story dan Inception ada rekomendasi kurang sesuai.
 
 
----
+### Kesimpulan
 
-### Analisis dan Interpretasi
-
-1. Toy Story :
-- Rekomendasi seperti Toy Story 3 dan Toy Story 2 sangat relevan karena merupakan sekuel dengan genre Animation Comedy Family dan tema serupa cerita tentang mainan.
-- Rekomendasi seperti Small Fry relevan karena merupakan spin-off dari Toy Story.
-- Beberapa rekomendasi seperti Man on the Moon genre Biography Comedy Drama kurang relevan karena perbedaan tema naratif.
-
-2. The Dark Knight :
-- Rekomendasi seperti The Dark Knight Rises dan Batman Begins relevan karena memiliki genre Action Crime Drama dan tema superhero
-- Rekomendasi seperti Batman Returns juga relevan karena berfokus pada karakter Batman
-- Relevansi tinggi menunjukkan sistem efektif untuk film dengan genre dan tema yang jelas
-
-3. Inception
-- Rekomendasi seperti Cypher dan Minority Report relevan karena memiliki tema sci-fi dan thriller.
-- Beberapa rekomendasi kurang spesifik karena overview tidak selalu menangkap tema kompleks seperti mimpi dalam Inception.
-- Relevansi sedang menunjukkan keterbatasan sistem dalam menangkap narasi kompleks.
+- Model mencapai Precision 0.87, melewati target 85%.
+- tagline meningkatkan relevansi.
+- Preprocessing memastikan dataset berkualitas.
+- Perbaikan seperti keywords dapat meningkatkan performa.
 
 
-### Pemilihan Model Terbaik
 
-🟢 Model Terbaik Content-based Filtering dengan TF-IDF dan Cosine Similarity
-
-Alasan pemilihan:
-- Menghasilkan rekomendasi yang relevan untuk film dengan genre dan tema yang jelas seperti Toy Story dan The Dark Knight.
-- Sederhana dan efisien untuk dataset teks dengan sumber daya komputasi terbatas.
-- Dapat diintegrasikan dalam platform streaming dengan mudah.
-
-
-## Catatan Evaluasi
-
-Keterbatasan data preferensi pengguna menyebabkan evaluasi hanya dilakukan secara kualitati Sistem efektif untuk film dengan konten yang jelas tetapi kurang akurat untuk narasi kompleks seperti Inception Penambahan fitur seperti aktor atau sutradara dapat meningkatkan relevansi.
-
-
----
-
-### Solution Statement
-
-Untuk mencapai tujuan di atas, beberapa solusi diuji dan dibandingkan:
-- Model utama Content-based Filtering dengan TF-IDF dan Cosine Similarity sebagai pendekatan sederhana dan efektif.
-- Model alternatif Content-based Filtering dengan Word Embeddings untuk menangkap hubungan semantik dalam teks
-
-
----
-
-
-# 📊 Laporan Evaluasi Sistem Rekomendasi Film
-
-Ringkasan Hasil:
-
-- Dua pendekatan Content-based Filtering diuji TF-IDF dengan Cosine Similarity dipilih sebagai model utama karena menghasilkan rekomendasi relevan untuk film seperti Toy Story dan The Dark Knight dengan genre dan tema yang jelas Pendekatan ini sederhana dan efisien tetapi kurang akurat untuk film dengan narasi kompleks seperti Inception Keterbatasan data preferensi pengguna menyebabkan evaluasi hanya dilakukan secara kualitatif
